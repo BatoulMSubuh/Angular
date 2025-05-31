@@ -1,0 +1,49 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <div style="display: flex; height: 100vh; font-family: Arial, sans-serif;">
+
+      <!-- القائمة اليمنى -->
+      <div style="width: 25%; border-left: 1px solid #ccc; overflow-y: auto; padding: 10px; background-color: #f9f9f9;">
+        <h3 style="text-align: center;">المنتجات</h3>
+        <div
+          *ngFor="let product of products"
+          (click)="selectProduct(product)"
+          [style.cursor]="'pointer'"
+          [style.marginBottom]="'10px'"
+          [style.border]="'1px solid #ddd'"
+          [style.borderRadius]="'5px'"
+          [style.padding]="'10px'"
+          [style.backgroundColor]="selectedProduct?.id === product.id ? '#e0f7fa' : 'white'">
+          <h4 style="margin: 0;">{{ product.name }}</h4>
+          <img [src]="product.image" alt="{{ product.name }}" style="width: 100%; height: auto; border-radius: 5px; margin-top: 10px;"/>
+        </div>
+      </div>
+
+      <!-- تفاصيل المنتج -->
+      <div style="flex: 1; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div *ngIf="selectedProduct" style="text-align: center; border: 1px solid #ccc; padding: 20px; border-radius: 10px; width: 80%; background-color: #fff;">
+          <h2>{{ selectedProduct.name }}</h2>
+          <img [src]="selectedProduct.image" alt="{{ selectedProduct.name }}" style="width: 80%; height: auto; border-radius: 10px; margin: 20px 0;"/>
+          <p>{{ selectedProduct.description }}</p>
+        </div>
+        <div *ngIf="!selectedProduct" style="text-align: center;">
+          <p>يرجى اختيار منتج من القائم</p>
+        </div>
+      </div>
+
+    </div>
+  `,
+  styles: []
+})
+export class AppComponent {
+  products = [
+    { id: 1, name: 'منتج 1', description: 'تفاصيل المنتج 1', image: 'https://via.placeholder.com/150' },
+    { id: 2, name: 'منتج 2', description: 'تفاصيل المنتج 2', image: 'https://via.placeholder.com/150' },
+    { id: 3, name: 'منتج 3', description: 'تفاصيل المنتج 3', image: 'https://via.placeholder.com/150' },
+  ];
+
+
+}

@@ -1,0 +1,48 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <div style="display: flex; height: 100vh;">
+      <!-- قائمة المنتجات -->
+      <div style="width: 25%; border-right: 1px solid #ccc; overflow-y: auto;">
+        <h3 style="text-align: center;">المنتجات</h3>
+        <ul style="list-style-type: none; padding: 0;">
+          <li
+            *ngFor="let product of products"
+            (click)="selectProduct(product)"
+            [style.cursor]="'pointer'"
+            [style.padding]="'10px'"
+            [style.borderBottom]="'1px solid #ddd'"
+            [style.backgroundColor]="selectedProduct?.id === product.id ? '#f0f0f0' : 'white'">
+            {{ product.name }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- تفاصيل المنتج -->
+      <div style="flex: 1; padding: 20px;" *ngIf="selectedProduct">
+        <h2>{{ selectedProduct.name }}</h2>
+        <p>{{ selectedProduct.description }}</p>
+        <p><strong>السعر </strong>{{ selectedProduct.price }} $</p>
+      </div>
+    </div>
+  `,
+  styles: []
+})
+export class AppComponent {
+  products = [
+    { id: 1, name: 'منتج 1', description: 'وصف المنتج 1', price: 100 },
+    { id: 2, name: 'منتج 2', description: 'وصف المنتج 2', price: 200 },
+    { id: 3, name: 'منتج 3', description: 'وصف المنتج 3', price: 300 },
+  ];
+
+
+    let a =60 ;
+
+    let selectedProduct= null;
+
+  selectProduct(product: any) {
+    this.selectedProduct = product;
+  }
+}
