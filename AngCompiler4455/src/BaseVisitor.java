@@ -144,7 +144,7 @@ public class BaseVisitor extends AngParserBaseVisitor {
 
 
     FunctionBodyStatments visitFunctionBodyStatement(AngParser.FunctionBodyStatmentsContext ctx) {
-        // TODO
+
         FunctionBodyStatments statments = new FunctionBodyStatments();
         if(ctx instanceof AngParser.FuncPrintContext){
             statments.setPrintStatment(visitFuncPrint((AngParser.FuncPrintContext) ctx));
@@ -154,14 +154,19 @@ public class BaseVisitor extends AngParserBaseVisitor {
             statments.setDatatype(visitFuncDatatype((AngParser.FuncDatatypeContext) ctx));
             return statments;
         }
-        return null;
+    return null;
     }
 
 
     @Override
     public FunctionBody visitFunctionBody(AngParser.FunctionBodyContext ctx) {
-        // TODO
-        return null;
+        FunctionBody functionBody = new FunctionBody();
+        for (int i = 0; i < ctx.functionBodyStatments().size(); i++) {
+            if(ctx.functionBodyStatments(i)!= null){
+                functionBody.getFunctionBodyStatments().add(visitFunctionBodyStatement(ctx.functionBodyStatments(i)));
+            }
+        }
+        return functionBody;
     }
 
     @Override
@@ -171,8 +176,27 @@ public class BaseVisitor extends AngParserBaseVisitor {
 
     @Override
     public FunctionStatment visitFunctionStatment(AngParser.FunctionStatmentContext ctx) {
-        // TODO
-        return null;
+
+        FunctionStatment function = new FunctionStatment();
+        if(ctx.Function()!=null){
+            function.setFunction(ctx.Function().getText());
+        }
+        if(ctx.keyWord()!=null){
+            function.setFunction_type(visitKeyWord(ctx.keyWord()));
+        }
+        if(ctx.ID()!=null){
+        function.setFunction_name(ctx.ID().getText());
+        }
+        if(ctx.functionBody()!=null){
+            function.setFunctionBody(visitFunctionBody(ctx.functionBody()));
+        }
+        for (int i = 0; i < function.getFunctionAttributes().size(); i++) {
+            if(ctx.functionAttributes(i)!=null){
+                function.getFunctionAttributes().add(visitFunctionAttributes(ctx.functionAttributes(i)));
+            }
+
+        }
+        return function;
     }
 
     @Override
@@ -392,52 +416,9 @@ public class BaseVisitor extends AngParserBaseVisitor {
         return super.visitHtmlAttrBinding(ctx);
     }
 
-    @Override
-    public VariableStatement visitDatatypeVariable(AngParser.DatatypeVariableContext ctx) {
-        ctx.getText();
-        //TODO
-        return null;
-    }
 
-    @Override
-    public Object visitDatatypeEnumStatement(AngParser.DatatypeEnumStatementContext ctx) {
-        return super.visitDatatypeEnumStatement(ctx);
-    }
 
-    @Override
-    public Object visitDatatypeList(AngParser.DatatypeListContext ctx) {
-        return super.visitDatatypeList(ctx);
-    }
 
-    @Override
-    public Object visitKWAny(AngParser.KWAnyContext ctx) {
-        return super.visitKWAny(ctx);
-    }
-
-    @Override
-    public Object visitKWNumber(AngParser.KWNumberContext ctx) {
-        return super.visitKWNumber(ctx);
-    }
-
-    @Override
-    public Object visitKWBoolean(AngParser.KWBooleanContext ctx) {
-        return super.visitKWBoolean(ctx);
-    }
-
-    @Override
-    public Object visitKWString(AngParser.KWStringContext ctx) {
-        return super.visitKWString(ctx);
-    }
-
-    @Override
-    public Object visitKWEnumID(AngParser.KWEnumIDContext ctx) {
-        return super.visitKWEnumID(ctx);
-    }
-
-    @Override
-    public Object visitKWVoid(AngParser.KWVoidContext ctx) {
-        return super.visitKWVoid(ctx);
-    }
 
     @Override
     public Object visitKWValueNumber(AngParser.KWValueNumberContext ctx) {
@@ -470,9 +451,21 @@ public class BaseVisitor extends AngParserBaseVisitor {
     }
 
     @Override
-    public Object visitVariableStatementRule(AngParser.VariableStatementRuleContext ctx) {
-        // TODO
-        return null;
+    public VariableStatement visitVariableStatementRule(AngParser.VariableStatementRuleContext ctx) {
+        VariableStatement var = new VariableStatement();
+        if(ctx.ID()!=null){
+            var.setLet(ctx.ID().getText());
+        }
+        if(ctx.ID()!=null){
+            var.setVarname(ctx.ID().getText());
+        }
+
+        if (ctx.keyWord()!=null){
+            var.setVartypeword(visitKeyWord(ctx.keyWord()));
+        }
+
+
+        return var;
     }
 
     @Override
@@ -487,13 +480,40 @@ public class BaseVisitor extends AngParserBaseVisitor {
 
     @Override
     public FunctionAttributes visitFunctionAttributes(AngParser.FunctionAttributesContext ctx) {
-        // TODO
-        return null;
+        FunctionAttributes fun = new FunctionAttributes();
+
+        if(ctx.ID() != null){
+            fun.setAttribute_name(ctx.ID().getText());
+        }
+
+        if (ctx.keyWord() != null){
+            fun.setAttribute_type(visitKeyWord(ctx.keyWord()));
+        }
+        return fun;
     }
 
 
-    KeyWord visitKeyWord(AngParser.KeyWordContext ctx) {
-        // TODO
+     public KeyWord visitKeyWord(AngParser.KeyWordContext ctx) {
+
+         KeyWord kw = new KeyWord();
+         if(ctx.String()!=null){
+             kw.setType_string(ctx.String().getText());
+         }
+         if(ctx.Any()!=null){
+             kw.setType_string(ctx.Any().getText());
+         }
+         if(ctx.Void()!=null){
+             kw.setType_string(ctx.Void().getText());
+         }
+         if(ctx.Boolean1()!=null){
+             kw.setType_string(ctx.Boolean1().getText());
+         }
+         if(ctx.EnumID()!=null){
+             kw.setType_string(ctx.EnumID().getText());
+         }
+
+
+
         return null;
     }
 
@@ -504,16 +524,27 @@ public class BaseVisitor extends AngParserBaseVisitor {
 
 
     @Override
-    public Datatype visitFuncDatatype(AngParser.FuncDatatypeContext ctx) {
-        // TODO
-        Datatype datatype = new Datatype();
+    public Object visitDatatype(AngParser.DatatypeContext ctx) {
+        Datatype dat = new Datatype();
+        if(ctx.enumStatment()!=null) {
+            dat.setEnumStatment((EnumStatment) visitEnumStatment(ctx.enumStatment()));
+        }
+        return  dat;
+    }
 
-        if(ctx.datatype() instanceof AngParser.DatatypeVariableContext){
-            datatype.setVariableStatement(visitDatatypeVariable((AngParser.DatatypeVariableContext)ctx.datatype()));
+    @Override
+    public Datatype visitFuncDatatype(AngParser.FuncDatatypeContext ctx) {
+
+        FuncDatatypeRule datatype = new FuncDatatypeRule();
+
+        if(ctx.datatype()!=null){
+            datatype.setDatatype((Datatype) visitDatatype(ctx.datatype()));
+
 
         }
 
-        return datatype;
+
+        return  null;
     }
 
 

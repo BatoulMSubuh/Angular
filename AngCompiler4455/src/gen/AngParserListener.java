@@ -416,113 +416,25 @@ public interface AngParserListener extends ParseTreeListener {
 	 */
 	void exitHtmlAttrBinding(AngParser.HtmlAttrBindingContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code DatatypeVariable}
-	 * labeled alternative in {@link AngParser#datatype}.
+	 * Enter a parse tree produced by {@link AngParser#datatype}.
 	 * @param ctx the parse tree
 	 */
-	void enterDatatypeVariable(AngParser.DatatypeVariableContext ctx);
+	void enterDatatype(AngParser.DatatypeContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code DatatypeVariable}
-	 * labeled alternative in {@link AngParser#datatype}.
+	 * Exit a parse tree produced by {@link AngParser#datatype}.
 	 * @param ctx the parse tree
 	 */
-	void exitDatatypeVariable(AngParser.DatatypeVariableContext ctx);
+	void exitDatatype(AngParser.DatatypeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code DatatypeEnumStatement}
-	 * labeled alternative in {@link AngParser#datatype}.
+	 * Enter a parse tree produced by {@link AngParser#keyWord}.
 	 * @param ctx the parse tree
 	 */
-	void enterDatatypeEnumStatement(AngParser.DatatypeEnumStatementContext ctx);
+	void enterKeyWord(AngParser.KeyWordContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code DatatypeEnumStatement}
-	 * labeled alternative in {@link AngParser#datatype}.
+	 * Exit a parse tree produced by {@link AngParser#keyWord}.
 	 * @param ctx the parse tree
 	 */
-	void exitDatatypeEnumStatement(AngParser.DatatypeEnumStatementContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code DatatypeList}
-	 * labeled alternative in {@link AngParser#datatype}.
-	 * @param ctx the parse tree
-	 */
-	void enterDatatypeList(AngParser.DatatypeListContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code DatatypeList}
-	 * labeled alternative in {@link AngParser#datatype}.
-	 * @param ctx the parse tree
-	 */
-	void exitDatatypeList(AngParser.DatatypeListContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code KWAny}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void enterKWAny(AngParser.KWAnyContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code KWAny}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void exitKWAny(AngParser.KWAnyContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code KWNumber}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void enterKWNumber(AngParser.KWNumberContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code KWNumber}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void exitKWNumber(AngParser.KWNumberContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code KWBoolean}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void enterKWBoolean(AngParser.KWBooleanContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code KWBoolean}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void exitKWBoolean(AngParser.KWBooleanContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code KWString}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void enterKWString(AngParser.KWStringContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code KWString}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void exitKWString(AngParser.KWStringContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code KWEnumID}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void enterKWEnumID(AngParser.KWEnumIDContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code KWEnumID}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void exitKWEnumID(AngParser.KWEnumIDContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code KWVoid}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void enterKWVoid(AngParser.KWVoidContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code KWVoid}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 */
-	void exitKWVoid(AngParser.KWVoidContext ctx);
+	void exitKeyWord(AngParser.KeyWordContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code KWValueNumber}
 	 * labeled alternative in {@link AngParser#keyWordValues}.

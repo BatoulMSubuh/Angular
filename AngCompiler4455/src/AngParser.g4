@@ -96,18 +96,18 @@ htmlAttributeValue
 // ------------------
 
 datatype
-    : variableStatement                                #DatatypeVariable
-    | enumStatment                                     #DatatypeEnumStatement
-    | definelist                                       #DatatypeList
+    : variableStatement                                
+    | enumStatment
+    | definelist
     ;
 
 keyWord
-    : Any                                              #KWAny
-    | Number1                                          #KWNumber
-    | Boolean1                                         #KWBoolean
-    | String                                           #KWString
-    | EnumID                                           #KWEnumID
-    | Void                                             #KWVoid
+    : Any
+    | Number1
+    | Boolean1
+    | String
+    | EnumID
+    | Void
     ;
 
 keyWordValues

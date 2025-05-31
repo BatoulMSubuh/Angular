@@ -13,6 +13,10 @@ public class FunctionBody {
         this.functionBodyStatments = functionBodyStatments;
     }
 
+    public FunctionBody() {
+        this.functionBodyStatments = new ArrayList<>();
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

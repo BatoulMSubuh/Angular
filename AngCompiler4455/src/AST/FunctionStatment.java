@@ -32,8 +32,14 @@ public class FunctionStatment extends Statments{
     public void setFunctionAttributes(ArrayList<FunctionAttributes> functionAttributes) {
         this.functionAttributes = functionAttributes;
     }
-
-
+    public  FunctionStatment(){}
+    public FunctionStatment(String function, String function_name, ArrayList<FunctionAttributes> functionAttributes, KeyWord function_type, FunctionBody functionBody) {
+        this.function = function;
+        this.function_name = function_name;
+        this.functionAttributes = functionAttributes;
+        this.function_type = function_type;
+        this.functionBody = functionBody;
+    }
 
     public KeyWord getFunction_type() {
         return function_type;
@@ -50,7 +56,9 @@ public class FunctionStatment extends Statments{
     public void setFunctionBody(FunctionBody functionBody) {
         this.functionBody = functionBody;
     }
-
+    public void addchald(FunctionAttributes functionAtrribut){
+        this.functionAttributes.add(functionAtrribut);
+    }
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();

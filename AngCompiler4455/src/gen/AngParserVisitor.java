@@ -250,68 +250,17 @@ public interface AngParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitHtmlAttrBinding(AngParser.HtmlAttrBindingContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code DatatypeVariable}
-	 * labeled alternative in {@link AngParser#datatype}.
+	 * Visit a parse tree produced by {@link AngParser#datatype}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDatatypeVariable(AngParser.DatatypeVariableContext ctx);
+	T visitDatatype(AngParser.DatatypeContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code DatatypeEnumStatement}
-	 * labeled alternative in {@link AngParser#datatype}.
+	 * Visit a parse tree produced by {@link AngParser#keyWord}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDatatypeEnumStatement(AngParser.DatatypeEnumStatementContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code DatatypeList}
-	 * labeled alternative in {@link AngParser#datatype}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDatatypeList(AngParser.DatatypeListContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code KWAny}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitKWAny(AngParser.KWAnyContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code KWNumber}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitKWNumber(AngParser.KWNumberContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code KWBoolean}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitKWBoolean(AngParser.KWBooleanContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code KWString}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitKWString(AngParser.KWStringContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code KWEnumID}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitKWEnumID(AngParser.KWEnumIDContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code KWVoid}
-	 * labeled alternative in {@link AngParser#keyWord}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitKWVoid(AngParser.KWVoidContext ctx);
+	T visitKeyWord(AngParser.KeyWordContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code KWValueNumber}
 	 * labeled alternative in {@link AngParser#keyWordValues}.

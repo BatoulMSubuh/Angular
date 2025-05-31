@@ -11,7 +11,7 @@ public  class KeyWord {
     public String getType_any() {
         return type_any;
     }
-
+    public KeyWord(){}
     public void setType_any(String type_any) {
         this.type_any = type_any;
     }
